@@ -36,7 +36,7 @@ public class ArrCharOps {
     /** Returns the char value at the specified index. Assume that the array is non-empty.
      */
     public static char charAt(char[] arr, int index) {
-        int i = index-1;
+        int i = index;
 
         return arr[i];
     }
