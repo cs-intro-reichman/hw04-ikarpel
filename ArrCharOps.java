@@ -167,27 +167,35 @@ public class ArrCharOps {
      */
     public static int compareTo(String str1, String str2) {
         
-            int minLength = Math.min(str1.length(), str2.length());
+            if (str1 == null || str2 == null || str1.length() == 0 || str2.length() == 0) {
+            return -2;
+        }
+        
+        // Find the length of the shorter string
+        int minLength = Math.min(str1.length(), str2.length());
 
-            for(int i = 0; i < minLength; i++){
-                if(str1.charAt(i) < str2.charAt(i)){
-                    return -1;
-                }else if(str1.charAt(i) > str2.charAt(i)){
-                    return 1;
+        // Iterate over the characters of both strings
+        for (int i = 0; i < minLength; i++) {
+            char c1 = str1.charAt(i);
+            char c2 = str2.charAt(i);
+
+            if (c1 != c2) {
+                if (c1 < c2) {
+                    return -1; // str1 is lexicographically smaller
+                } else {
+                    return 1; // str1 is lexicographically larger
                 }
             }
-             if(str1.length() == str2.length()){
-                return 0;
-             }else {
-                if(str1.length() > str2.length()){
-                return 1;
-                }else{
-                    return -1;
-                }
-             }
-            
-        
-            
-        
+        }
+
+        // If we reached here, one string is a prefix of the other (or they are equal)
+        // The shorter string is considered smaller
+        if (str1.length() < str2.length()) {
+            return -1;
+        } else if (str1.length() > str2.length()) {
+            return 1;
+        } else {
+            return 0; // Strings are identical
+        }
     }
 }
