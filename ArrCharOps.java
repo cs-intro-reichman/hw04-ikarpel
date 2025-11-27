@@ -196,6 +196,7 @@ public class ArrCharOps {
             return 1;
         } else {
             return 0; // Strings are identical
+            
         }
     }
 }
