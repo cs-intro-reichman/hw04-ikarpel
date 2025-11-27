@@ -131,13 +131,13 @@ public class ArrCharOps {
      *  The hash value of an empty array is zero.
      */
     public static long hashCode(char[] arr) {
-        int hash =0;
-        for(int i = 0; i < arr.length; i++){
-            hash += arr[i] * Math.pow(7, arr.length -1 - i);
+        long hash = 0;
+        for (int i = 0; i < arr.length; i++) {
+            // Multiply the current hash by 7 and add the current character
+            // This is equivalent to multiplying by powers of 7 but avoids floating point errors
+            hash = hash * 7 + arr[i];
         }
-
-        
-        return 0;
+        return hash;
     }
 
     /**
@@ -196,7 +196,7 @@ public class ArrCharOps {
             return 1;
         } else {
             return 0; // Strings are identical
-            
+
         }
     }
 }
